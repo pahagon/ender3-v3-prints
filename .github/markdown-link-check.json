@@ -1,6 +1,8 @@
 {
   "ignorePatterns": [
-    { "pattern": "^https://github.com/pahagon" }
+    { "pattern": "^https://github.com/pahagon" },
+    { "pattern": "^https://www.printables.com" },
+    { "pattern": "^https://makerworld.com" }
   ],
   "retryOn429": true,
   "retryCount": 2,

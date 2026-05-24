@@ -31,6 +31,7 @@ Configurações base validadas e calibrações realizadas: [`docs/printer-settin
 Os principais materiais usados são **PLA** e **PETG**. Consulte [`docs/filaments.md`](./docs/filaments.md) para temperaturas validadas, estoque e notas de secagem antes de sugerir parâmetros de impressão.
 
 Ao recomendar configurações, sempre verifique:
+
 1. Se o material já tem temperaturas validadas registradas em `docs/filaments.md`
 2. Se as configurações estão dentro dos limites do hardware (hotend, mesa, volume)
 3. Se existe perfil de slicer correspondente em `profiles/orcaslicer/`
@@ -39,7 +40,7 @@ Ao recomendar configurações, sempre verifique:
 
 ## Estrutura do repositório
 
-```
+```text
 models/
   functional/        # Peças utilitárias (suportes, adaptadores, etc.)
   decorative/        # Itens decorativos

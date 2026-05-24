@@ -6,7 +6,7 @@ Controle de estoque, temperaturas validadas e avaliação por rolo.
 
 ## Template
 
-```
+```text
 | Marca | Material | Cor | Temp. Bico | Temp. Mesa | Status | Avaliação |
 |-------|----------|-----|-----------|-----------|--------|-----------|
 | ...   | PLA      | ... | 215–220°C | 60°C      | 🟢 Em uso | ⭐⭐⭐⭐⭐ |
@@ -23,6 +23,7 @@ Controle de estoque, temperaturas validadas e avaliação por rolo.
 ---
 
 ## Status
+
 - 🟢 Em uso
 - 🟡 Reserva
 - 🔴 Acabou

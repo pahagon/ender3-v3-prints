@@ -10,7 +10,7 @@ Repositório pessoal para gerenciar modelos, perfis de fatiamento, G-codes e not
 
 ## 📁 Estrutura
 
-```
+```text
 ender3-v3-prints/
 ├── models/                  # Arquivos de modelo (.stl, .3mf, .step)
 │   ├── functional/          # Peças utilitárias (suportes, adaptadores, etc.)
@@ -35,6 +35,7 @@ ender3-v3-prints/
 ## 🛠️ Slicer recomendado
 
 Para a Ender 3 V3, o **[OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)** é a melhor opção:
+
 - Perfil nativo para Ender 3 V3 (com input shaping e pressure advance)
 - Calibração integrada (fluxo, temperatura, retração)
 - Suporte a impressão multi-material
