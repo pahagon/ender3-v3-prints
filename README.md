@@ -3,6 +3,7 @@
 [![Markdown](https://github.com/pahagon/ender3-v3-prints/actions/workflows/markdown.yml/badge.svg)](https://github.com/pahagon/ender3-v3-prints/actions/workflows/markdown.yml)
 [![JSON](https://github.com/pahagon/ender3-v3-prints/actions/workflows/json.yml/badge.svg)](https://github.com/pahagon/ender3-v3-prints/actions/workflows/json.yml)
 [![Security](https://github.com/pahagon/ender3-v3-prints/actions/workflows/security.yml/badge.svg)](https://github.com/pahagon/ender3-v3-prints/actions/workflows/security.yml)
+[![Branch name](https://github.com/pahagon/ender3-v3-prints/actions/workflows/branch-name.yml/badge.svg)](https://github.com/pahagon/ender3-v3-prints/actions/workflows/branch-name.yml)
 
 Repositório pessoal para gerenciar modelos, perfis de fatiamento, G-codes e notas de impressão da Ender 3 V3.
 
