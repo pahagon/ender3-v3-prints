@@ -8,7 +8,7 @@
 
 Copie e cole para cada nova impressão:
 
-```
+```markdown
 ### [NOME DO MODELO] — [DATA]
 - **Arquivo:** `models/<categoria>/<nome>.stl`
 - **Slicer / Perfil:** OrcaSlicer › `profiles/orcaslicer/<perfil>.json`
@@ -30,6 +30,7 @@ Copie e cole para cada nova impressão:
 <!-- Entradas mais recentes no topo -->
 
 ### Exemplo — Suporte de Câmera — 2025-05-24
+
 - **Arquivo:** `models/functional/suporte-camera.stl`
 - **Slicer / Perfil:** OrcaSlicer › `profiles/orcaslicer/pla-padrao.json`
 - **Filamento:** Polymaker PolyLite PLA, Preto

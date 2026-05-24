@@ -9,7 +9,7 @@ Coloque aqui os arquivos `.json` de perfis exportados do OrcaSlicer.
 
 ## Convenção de nomes
 
-```
+```text
 <material>-<finalidade>-<qualidade>.json
 
 Exemplos:
