@@ -76,13 +76,42 @@ EOF
 
 ### 4. Iterar e marcar como pronto
 
-Faça os ajustes necessários (novos commits, correções de parâmetros). Quando estiver pronto:
+Faça os ajustes necessários (novos commits, correções de parâmetros). Se a descrição do PR
+ficou desatualizada em relação ao que foi feito, atualize antes de marcar como pronto:
+
+```bash
+gh pr edit --body "$(cat <<'EOF'
+## Resumo
+
+- Descrição atualizada do que foi feito
+
+## Checklist
+
+- [ ] ...
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+EOF
+)"
+```
+
+Quando estiver pronto:
 
 ```bash
 gh pr ready
 ```
 
-### 5. Após merge
+### 5. Verificar checks antes do merge
+
+Antes de fazer merge, confirme que todos os checks do GitHub Actions passaram:
+
+```bash
+gh pr checks
+```
+
+Só prossiga com o merge se todos os checks estiverem com status `pass`. Checks com falha
+devem ser corrigidos com novos commits na mesma branch.
+
+### 6. Após merge
 
 ```bash
 git checkout main && git pull
