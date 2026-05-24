@@ -1,0 +1,22 @@
+name: JSON
+
+on:
+  pull_request:
+    paths:
+      - "**.json"
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: json lint
+        run: |
+          find . -name "*.json" \
+            -not -path "./.github/*" \
+            -not -path "./node_modules/*" \
+            | while read f; do
+              python3 -m json.tool "$f" > /dev/null && echo "OK: $f" || { echo "ERRO: $f"; exit 1; }
+            done

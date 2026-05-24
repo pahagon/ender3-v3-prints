@@ -1,0 +1,26 @@
+# Arquivos temporários do OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários de slicers
+*.bak
+*.tmp
+~*
+
+# G-codes temporários (não aprovados)
+gcodes/wip/
+*.gcode.bak
+
+# Logs de slicers
+*.log
+
+# Arquivos grandes de modelos (usar Git LFS para estes)
+# Descomente se não usar LFS e quiser ignorar:
+# *.stl
+# *.3mf
+# *.gcode
+
+# Diretório de trabalho local
+wip/
+.local/
