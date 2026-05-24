@@ -20,6 +20,9 @@ Trunk-based development com feature branches de curta duração.
 - Branches em lowercase com hífens (`feat/suporte-raspberry`, não `feat/Suporte_Raspberry`)
 - Vida curta — abrir PR assim que o trabalho estiver pronto
 
+A convenção é reforçada por um git hook local (bloqueia o `git push`) e por GitHub Actions
+(bloqueia o merge do PR). Ver [Validação de nomes de branch](#validação-de-nomes-de-branch).
+
 ---
 
 ## Workflow
@@ -76,13 +79,42 @@ EOF
 
 ### 4. Iterar e marcar como pronto
 
-Faça os ajustes necessários (novos commits, correções de parâmetros). Quando estiver pronto:
+Faça os ajustes necessários (novos commits, correções de parâmetros). Se a descrição do PR
+ficou desatualizada em relação ao que foi feito, atualize antes de marcar como pronto:
+
+```bash
+gh pr edit --body "$(cat <<'EOF'
+## Resumo
+
+- Descrição atualizada do que foi feito
+
+## Checklist
+
+- [ ] ...
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+EOF
+)"
+```
+
+Quando estiver pronto:
 
 ```bash
 gh pr ready
 ```
 
-### 5. Após merge
+### 5. Verificar checks antes do merge
+
+Antes de fazer merge, confirme que todos os checks do GitHub Actions passaram:
+
+```bash
+gh pr checks
+```
+
+Só prossiga com o merge se todos os checks estiverem com status `pass`. Checks com falha
+devem ser corrigidos com novos commits na mesma branch.
+
+### 6. Após merge
 
 ```bash
 git checkout main && git pull
@@ -135,4 +167,32 @@ git add models/upgrades-printer/tensor-correia-eixo-x.stl
 git commit -m "feat(upgrades): adiciona tensor de correia eixo X"
 git push -u origin feat/tensor-correia-eixo-x
 gh pr create --title "feat: tensor correia eixo X"
+```
+
+---
+
+## Validação de nomes de branch
+
+A convenção é reforçada em duas camadas:
+
+| Camada | Onde bloqueia | Arquivo |
+|---|---|---|
+| Git hook (`pre-push`) | Na máquina, antes do push | `.githooks/pre-push` |
+| GitHub Actions | No PR, antes do merge | `.github/workflows/branch-name.yml` |
+
+**Padrão aceito:** `^(main|(feat|fix|docs|chore)/[a-z0-9][a-z0-9-]*)$`
+
+| Válido | Inválido |
+|---|---|
+| `feat/suporte-raspberry` | `feature/suporte-raspberry` |
+| `fix/retracao-pla` | `Fix/Retracao-PLA` |
+| `docs/print-log-mai` | `docs/print_log_mai` |
+| `chore/reorganiza-models` | `minha-branch` |
+
+### Ativar o hook local
+
+Execute uma vez após clonar o repositório:
+
+```bash
+git config core.hooksPath .githooks
 ```

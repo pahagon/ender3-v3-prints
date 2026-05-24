@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Valida os nomes das branches sendo empurradas.
+# Instalação: git config core.hooksPath .githooks
+
+PATTERN="^refs/heads/(main|(feat|fix|docs|chore)/[a-z0-9][a-z0-9-]*)$"
+FAILED=0
+
+# stdin: "<local ref> <local sha> <remote ref> <remote sha>"
+while read -r local_ref local_sha remote_ref remote_sha; do
+  if [[ ! "$remote_ref" =~ $PATTERN ]]; then
+    BRANCH="${remote_ref#refs/heads/}"
+    echo ""
+    echo "pre-push: branch '$BRANCH' não segue a convenção."
+    echo ""
+    echo "Formatos válidos:"
+    echo "  feat/<descricao>"
+    echo "  fix/<descricao>"
+    echo "  docs/<descricao>"
+    echo "  chore/<descricao>"
+    echo ""
+    echo "Regras: lowercase, hífens, sem espaços ou underscores."
+    echo "Exemplo: feat/suporte-raspberry-pi4"
+    echo ""
+    FAILED=1
+  fi
+done
+
+exit $FAILED
