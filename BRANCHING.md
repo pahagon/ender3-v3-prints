@@ -20,6 +20,9 @@ Trunk-based development com feature branches de curta duração.
 - Branches em lowercase com hífens (`feat/suporte-raspberry`, não `feat/Suporte_Raspberry`)
 - Vida curta — abrir PR assim que o trabalho estiver pronto
 
+A convenção é reforçada automaticamente via GitHub Ruleset — `git push` de uma branch fora
+do padrão é rejeitado antes mesmo de abrir PR. Ver [Configuração do Ruleset](#configuração-do-ruleset).
+
 ---
 
 ## Workflow
@@ -164,4 +167,46 @@ git add models/upgrades-printer/tensor-correia-eixo-x.stl
 git commit -m "feat(upgrades): adiciona tensor de correia eixo X"
 git push -u origin feat/tensor-correia-eixo-x
 gh pr create --title "feat: tensor correia eixo X"
+```
+
+---
+
+## Configuração do Ruleset
+
+A convenção de nomes é reforçada via [GitHub Rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets),
+que bloqueia o `git push` de branches fora do padrão antes de qualquer PR ser aberto.
+
+### Aplicar via API
+
+```bash
+gh api repos/pahagon/ender3-v3-prints/rulesets \
+  --method POST \
+  --header "Accept: application/vnd.github+json" \
+  --field name="Branch naming convention" \
+  --field target="branch" \
+  --field enforcement="active" \
+  --field 'rules=[{
+    "type": "branch_name_pattern",
+    "parameters": {
+      "name": "Conventional branch names",
+      "negate": false,
+      "operator": "regex",
+      "pattern": "^(main|(feat|fix|docs|chore)/[a-z0-9][a-z0-9-]*)$"
+    }
+  }]'
+```
+
+**Padrão aceito:** `^(main|(feat|fix|docs|chore)/[a-z0-9][a-z0-9-]*)$`
+
+| Válido | Inválido |
+|---|---|
+| `feat/suporte-raspberry` | `feature/suporte-raspberry` |
+| `fix/retração-pla` | `Fix/Retracao-PLA` |
+| `docs/print-log-mai` | `docs/print_log_mai` |
+| `chore/reorganiza-models` | `minha-branch` |
+
+### Verificar rulesets ativos
+
+```bash
+gh api repos/pahagon/ender3-v3-prints/rulesets
 ```
