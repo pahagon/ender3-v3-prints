@@ -1,29 +1,30 @@
 #!/usr/bin/env bash
 # =============================================================================
-# list-models.sh — Lista todos os modelos no repositório com tamanho
+# list-models.sh — Lista as impressões do repositório com seus modelos e tamanho
 # Uso: ./scripts/list-models.sh
 # =============================================================================
 
-MODELS_DIR="$(dirname "$0")/../models"
+PRINTS_DIR="$(dirname "$0")/../prints"
 
 echo ""
-echo "📦 Modelos no repositório"
-echo "========================="
+echo "📦 Impressões no repositório"
+echo "============================"
 
 TOTAL=0
-for CATEGORY in "$MODELS_DIR"/*/; do
-  NAME=$(basename "$CATEGORY")
-  COUNT=$(find "$CATEGORY" -type f \( -iname "*.stl" -o -iname "*.3mf" -o -iname "*.obj" \) | wc -l | tr -d ' ')
-  
+for PRINT in "$PRINTS_DIR"/*/; do
+  [ -d "$PRINT" ] || continue
+  NAME=$(basename "$PRINT")
+  COUNT=$(find "$PRINT" -type f \( -iname "*.stl" -o -iname "*.3mf" -o -iname "*.obj" \) | wc -l | tr -d ' ')
+
   if [ "$COUNT" -gt 0 ]; then
     echo ""
-    echo "📁 $NAME ($COUNT arquivo(s))"
-    find "$CATEGORY" -type f \( -iname "*.stl" -o -iname "*.3mf" -o -iname "*.obj" \) \
+    echo "📁 $NAME ($COUNT modelo(s))"
+    find "$PRINT" -type f \( -iname "*.stl" -o -iname "*.3mf" -o -iname "*.obj" \) \
       -exec du -sh {} \; | awk '{printf "   %-8s %s\n", $1, $2}'
     TOTAL=$((TOTAL + COUNT))
   else
     echo ""
-    echo "📁 $NAME (vazio)"
+    echo "📁 $NAME (sem modelo)"
   fi
 done
 

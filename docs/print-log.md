@@ -10,8 +10,8 @@ Copie e cole para cada nova impressão:
 
 ```markdown
 ### [NOME DO MODELO] — [DATA]
-- **Arquivo:** `models/<categoria>/<nome>.stl`
-- **Slicer / Perfil:** OrcaSlicer › `profiles/orcaslicer/<perfil>.json`
+- **Arquivo:** `prints/<nome>/model/<arquivo>.stl`
+- **Slicer / Perfil:** OrcaSlicer › `prints/<nome>/profile/<perfil>.json`
 - **Filamento:** [marca, cor, material]
 - **Temp. Bico / Mesa:** [ex: 220°C / 60°C]
 - **Velocidade:** [ex: 150 mm/s]
@@ -31,8 +31,8 @@ Copie e cole para cada nova impressão:
 
 ### Exemplo — Suporte de Câmera — 2025-05-24
 
-- **Arquivo:** `models/functional/suporte-camera.stl`
-- **Slicer / Perfil:** OrcaSlicer › `profiles/orcaslicer/pla-padrao.json`
+- **Arquivo:** `prints/suporte-camera/model/suporte-camera.stl`
+- **Slicer / Perfil:** OrcaSlicer › `prints/suporte-camera/profile/pla-padrao.json`
 - **Filamento:** Polymaker PolyLite PLA, Preto
 - **Temp. Bico / Mesa:** 220°C / 60°C
 - **Velocidade:** 150 mm/s

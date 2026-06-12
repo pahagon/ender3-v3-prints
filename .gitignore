@@ -9,7 +9,7 @@ desktop.ini
 ~*
 
 # G-codes temporários (não aprovados)
-gcodes/wip/
+prints/*/gcode/wip/
 *.gcode.bak
 
 # Logs de slicers

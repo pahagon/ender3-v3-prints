@@ -1,4 +1,7 @@
-# Perfis — OrcaSlicer
+# Perfis base — OrcaSlicer
+
+Perfis **base/compartilhados**, reutilizados por várias impressões. O perfil
+específico de uma impressão fica em `prints/<nome>/profile/`.
 
 Coloque aqui os arquivos `.json` de perfis exportados do OrcaSlicer.
 
