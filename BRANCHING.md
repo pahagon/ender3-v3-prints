@@ -39,7 +39,7 @@ git checkout -b feat/minha-feature
 Seguir [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```bash
-git add models/functional/suporte-raspberry.stl
+git add prints/suporte-raspberry/
 git commit -m "feat(models): adiciona suporte para Raspberry Pi 4"
 ```
 
@@ -68,8 +68,8 @@ gh pr create --draft \
 ## Checklist
 
 - [ ] Modelo testado e aprovado (impressão física ou validação no slicer)
-- [ ] Perfil salvo em `profiles/<slicer>/`
-- [ ] G-code aprovado salvo em `gcodes/prints/` (se aplicável)
+- [ ] Perfil salvo em `prints/<nome>/profile/`
+- [ ] G-code aprovado salvo em `prints/<nome>/gcode/` (se aplicável)
 - [ ] `docs/print-log.md` atualizado
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
@@ -129,8 +129,8 @@ git branch -d feat/minha-feature
 
 ```bash
 git checkout -b feat/suporte-raspberry-pi4
-# ... adicionar arquivo em models/functional/ ...
-git add models/functional/suporte-raspberry-pi4.stl
+# ... adicionar arquivos em prints/suporte-raspberry-pi4/ (model/, gcode/, profile/, README.md) ...
+git add prints/suporte-raspberry-pi4/
 git commit -m "feat(models): adiciona suporte para Raspberry Pi 4"
 git push -u origin feat/suporte-raspberry-pi4
 gh pr create --title "feat: suporte Raspberry Pi 4"
@@ -141,7 +141,7 @@ gh pr create --title "feat: suporte Raspberry Pi 4"
 ```bash
 git checkout -b fix/orcaslicer-pla-retraction
 # ... editar perfil no OrcaSlicer e exportar ...
-git add profiles/orcaslicer/
+git add prints/<nome>/profile/
 git commit -m "fix(profiles): ajusta retração do PLA no OrcaSlicer"
 git push -u origin fix/orcaslicer-pla-retraction
 gh pr create --title "fix: retração PLA OrcaSlicer"
@@ -162,8 +162,8 @@ gh pr create --title "docs: print-log mai/2026"
 
 ```bash
 git checkout -b feat/tensor-correia-eixo-x
-# ... adicionar arquivo em models/upgrades-printer/ ...
-git add models/upgrades-printer/tensor-correia-eixo-x.stl
+# ... adicionar arquivos em prints/tensor-correia-eixo-x/ (categoria upgrades-printer no README) ...
+git add prints/tensor-correia-eixo-x/
 git commit -m "feat(upgrades): adiciona tensor de correia eixo X"
 git push -u origin feat/tensor-correia-eixo-x
 gh pr create --title "feat: tensor correia eixo X"

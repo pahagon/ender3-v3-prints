@@ -11,25 +11,31 @@ Repositório pessoal para gerenciar modelos, perfis de fatiamento, G-codes e not
 
 ## 📁 Estrutura
 
+Organização **por impressão**: cada impressão reúne modelo, G-code, perfil e
+notas numa pasta própria. Itens globais (macros, perfis base, docs) ficam no topo.
+
 ```text
 ender3-v3-prints/
-├── models/                  # Arquivos de modelo (.stl, .3mf, .step)
-│   ├── functional/          # Peças utilitárias (suportes, adaptadores, etc.)
-│   ├── decorative/          # Itens decorativos
-│   └── upgrades-printer/    # Melhorias para a própria impressora
-├── profiles/                # Perfis de fatiamento por slicer
+├── prints/                  # Uma pasta por impressão
+│   └── <nome-da-impressao>/
+│       ├── model/           # Modelos (.stl, .3mf, .obj)
+│       ├── gcode/           # G-codes aprovados e saídas do slicer
+│       ├── profile/         # Perfil OrcaSlicer exportado (.json)
+│       └── README.md        # Metadados (categoria, fonte, data, material)
+├── macros/                  # Macros de início e fim (start/end)
+├── profiles/                # Perfis base/compartilhados por slicer
 │   ├── orcaslicer/
 │   ├── cura/
 │   └── prusaslicer/
-├── gcodes/                  # G-codes prontos para impressão
-│   ├── start-end/           # Macros de início e fim
-│   └── prints/              # G-codes de impressões aprovadas
 ├── docs/                    # Documentação e notas
 │   ├── print-log.md         # Diário de impressões
 │   ├── printer-settings.md  # Configurações base da impressora
 │   └── filaments.md         # Registro de filamentos
 └── scripts/                 # Scripts utilitários
 ```
+
+A categoria (funcional / decorativo / upgrade) é registrada no `README.md` de
+cada impressão — ver [`prints/README.md`](./prints/README.md).
 
 ---
 
@@ -61,10 +67,11 @@ Como alternativas: **Cura** (mais simples) e **PrusaSlicer** (bom meio-termo).
 
 ## 📋 Fluxo de trabalho
 
-1. Baixar ou criar o modelo → salvar em `models/`
-2. Fatiar no slicer escolhido → salvar perfil em `profiles/<slicer>/`
-3. Imprimir e anotar resultado em `docs/print-log.md`
-4. Se aprovado, salvar o G-code em `gcodes/prints/`
+1. Criar a pasta da impressão → `prints/<nome>/` (model/, gcode/, profile/, README.md)
+2. Baixar ou criar o modelo → salvar em `prints/<nome>/model/`
+3. Fatiar no slicer escolhido → exportar perfil em `prints/<nome>/profile/`
+4. Imprimir e anotar resultado em `docs/print-log.md`
+5. Se aprovado, salvar o G-code em `prints/<nome>/gcode/`
 
 ---
 

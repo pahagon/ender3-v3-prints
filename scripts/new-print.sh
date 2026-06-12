@@ -14,7 +14,7 @@ echo "📋 Nova entrada no diário de impressões"
 echo "----------------------------------------"
 
 read -rp "Nome do modelo: " NOME
-read -rp "Arquivo (ex: models/functional/suporte.stl): " ARQUIVO
+read -rp "Arquivo (ex: prints/suporte/model/suporte.stl): " ARQUIVO
 read -rp "Slicer e perfil (ex: OrcaSlicer › perfil-pla.json): " SLICER
 read -rp "Filamento (marca, cor, material): " FILAMENTO
 read -rp "Temp. bico / mesa (ex: 220°C / 60°C): " TEMP

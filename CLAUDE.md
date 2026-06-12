@@ -34,37 +34,44 @@ Ao recomendar configurações, sempre verifique:
 
 1. Se o material já tem temperaturas validadas registradas em `docs/filaments.md`
 2. Se as configurações estão dentro dos limites do hardware (hotend, mesa, volume)
-3. Se existe perfil de slicer correspondente em `profiles/orcaslicer/`
+3. Se existe perfil de slicer correspondente em `prints/<nome>/profile/` (ou um perfil base em `profiles/orcaslicer/`)
 
 ---
 
 ## Estrutura do repositório
 
+Organização **por impressão**: cada impressão reúne todos os seus artefatos
+numa pasta própria sob `prints/`. Itens globais ficam no topo.
+
 ```text
-models/
-  functional/        # Peças utilitárias (suportes, adaptadores, etc.)
-  decorative/        # Itens decorativos
-  upgrades-printer/  # Melhorias para a própria impressora
-profiles/
-  orcaslicer/        # Perfis exportados do OrcaSlicer (.json)
-gcodes/
-  start-end/         # Macros de início e fim
-  prints/            # G-codes de impressões aprovadas
+prints/                # Uma pasta por impressão
+  <nome-da-impressao>/
+    model/             # Modelos (.stl, .3mf, .obj)
+    gcode/             # G-codes aprovados e saídas do slicer
+    profile/           # Perfil OrcaSlicer exportado (.json)
+    README.md          # Metadados (categoria, fonte, data, material)
+macros/                # Macros de início e fim (start/end)
+profiles/              # Perfis base/compartilhados por slicer
+  orcaslicer/
 docs/
-  print-log.md       # Diário de impressões
-  printer-settings.md # Configurações base e calibrações
-  filaments.md       # Registro de filamentos
-scripts/             # Scripts utilitários
+  print-log.md         # Diário de impressões
+  printer-settings.md  # Configurações base e calibrações
+  filaments.md         # Registro de filamentos
+scripts/               # Scripts utilitários
 ```
+
+A categoria (functional / decorative / upgrades-printer) é registrada como
+metadado no `README.md` de cada impressão — ver [`prints/README.md`](./prints/README.md).
 
 ---
 
 ## Fluxo de trabalho
 
-1. Baixar ou criar modelo → salvar em `models/<categoria>/`
-2. Fatiar no OrcaSlicer → exportar perfil em `profiles/orcaslicer/`
-3. Imprimir e registrar em `docs/print-log.md` (use o template do arquivo)
-4. Se aprovado, salvar G-code em `gcodes/prints/`
+1. Criar a pasta da impressão → `prints/<nome>/` (com `model/`, `gcode/`, `profile/` e `README.md`)
+2. Baixar ou criar modelo → salvar em `prints/<nome>/model/`
+3. Fatiar no OrcaSlicer → exportar perfil em `prints/<nome>/profile/`
+4. Imprimir e registrar em `docs/print-log.md` (use o template do arquivo)
+5. Se aprovado, salvar G-code em `prints/<nome>/gcode/`
 
 Ao registrar uma impressão em `print-log.md`, **leia o arquivo antes** para seguir o formato existente. Entradas mais recentes ficam no topo. Use sempre o template presente no arquivo.
 
